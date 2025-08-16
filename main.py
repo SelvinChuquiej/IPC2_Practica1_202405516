@@ -4,6 +4,10 @@ from LibroFisico import LibroFisico
 def menu():
     print("\n----------Biblioteca---------")
     print("1. Agregar Libro")
+    print("2. Buscar Libro")
+    print("3. Prestar Libro")
+    print("4. Devolver Libro")
+    print("5. Mostrar Información de Libros")
     print("6. Salir")
     print("-----------------------------")
 
@@ -34,6 +38,28 @@ def main():
                     break
                 else:
                     print("Tipo de Libro no válido. Intente nuevamente.")
+
+        elif opcion == '2':
+            codigo = input("Ingrese el código del Libro a buscar: ")
+            encontrado = False
+            for material in biblioteca:
+                if material.codigo == codigo:
+                    material.mostrar_info()
+                    encontrado = True
+                    break
+            if not encontrado:
+                print("Libro no encontrado.")
+        
+        elif opcion == '3':
+            codigo = input("Ingrese el código del Libro a prestar: ")
+            encontrado = False
+            for material in biblioteca:
+                if material.codigo == codigo:
+                    material.prestar()
+                    encontrado = True
+                    break
+            if not encontrado:
+                print("Libro no encontrado o no disponible para préstamo.")
 
         elif opcion == '6':
             print("Saliendo del programa.")

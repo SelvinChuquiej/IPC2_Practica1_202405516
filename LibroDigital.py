@@ -22,7 +22,7 @@ class LibroDigital(MaterialBiblioteca):
             print("Libro no disponible")
         else:
             self.estado = True
-            print(f"Libro '{self.titulo}' prestado. Ejemplares restantes: {self.no_ejemplares}")
+            print(f"Libro '{self.titulo}' prestado.")
  
     def mostrar_info(self):
         estado = "Disponible" if not self.estado else "Prestado"

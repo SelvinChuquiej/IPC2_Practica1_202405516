@@ -12,18 +12,22 @@ class LibroFisico(MaterialBiblioteca):
     @no_ejemplares.setter
     def no_ejemplares(self, value): 
         value = int(value)
-        if value > 0:
+        if value >= 0:
             self._no_ejemplares = value
         else:
             raise ValueError("El número de ejemplares debe ser un entero positivo.")
 
     def prestar(self):
-        if self.estado:
+        if self.estado or self.no_ejemplares <= 0:
             print("Libro no disponible")
         else:
-            self.estado = True
+            self.no_ejemplares -= 1
             print(f"Libro '{self.titulo}' prestado. Ejemplares restantes: {self.no_ejemplares}")
- 
+    
+    def devolver(self):
+        self.no_ejemplares += 1
+        print(f"Libro '{self.titulo}' devuelto. Ejemplares disponibles: {self.no_ejemplares}")
+
     def mostrar_info(self):
         estado = "Disponible" if not self.estado else "Prestado"
-        print(f"Título: {self.titulo}, Autor: {self.autor}, Código: {self.codigo}, Estado: {estado}, Exemplares disponibles: {self.no_ejemplares}")
+        print(f"Título: {self.titulo}, Autor: {self.autor}, Código: {self.codigo}, Estado: {estado}, Ejemplares disponibles: {self.no_ejemplares}")
