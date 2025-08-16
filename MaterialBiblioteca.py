@@ -13,7 +13,9 @@ class MaterialBiblioteca(ABC):
         return ''.join(random.choice(codigo) for _ in range(8))
 
     @property
-    def titulo(self):
+    def titulo(self, value):
+        if not value.strip():
+            raise ValueError("El título no puede estar vacío")
         return self._titulo
     
     @titulo.setter
@@ -21,7 +23,9 @@ class MaterialBiblioteca(ABC):
         self._titulo = value
 
     @property
-    def autor(self):
+    def autor(self, value):
+        if not value.strip():
+            raise ValueError("El autor no puede estar vacío")
         return self._autor
     
     @autor.setter
