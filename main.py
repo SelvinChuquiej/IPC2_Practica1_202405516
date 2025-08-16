@@ -28,16 +28,16 @@ def main():
                     tamaño_archivo = input("Ingrese el tamaño del archivo: ")
                     material = LibroDigital(titulo, autor, tamaño_archivo)
                     biblioteca.append(material)
-                    print(f"Libro '{material.titulo}' agregado con código {material.codigo}.")
+                    print(f"Libro '{material.titulo}' agregado con código {material.codigo}")
                     break
                 elif tipo == 'fisico':
                     no_ejemplares = int(input("Ingrese el número de ejemplares: "))
                     material = LibroFisico(titulo, autor, no_ejemplares)
                     biblioteca.append(material)
-                    print(f"Libro '{material.titulo}' agregado con código {material.codigo}.")
+                    print(f"Libro '{material.titulo}' agregado con código {material.codigo}")
                     break
                 else:
-                    print("Tipo de Libro no válido. Intente nuevamente.")
+                    print("Tipo de Libro no válido. Intente nuevamente")
 
         elif opcion == '2':
             codigo = input("Ingrese el código del Libro a buscar: ")
@@ -59,10 +59,28 @@ def main():
                     encontrado = True
                     break
             if not encontrado:
-                print("Libro no encontrado o no disponible para préstamo.")
+                print("Libro no encontrado o no disponible para préstamo")
+
+        elif opcion == '4':
+            codigo = input("Ingrese el código del Libro a devolver: ")
+            encontrado = False
+            for material in biblioteca:
+                if material.codigo == codigo:
+                    material.devolver()
+                    encontrado = True
+                    break
+            if not encontrado:
+                print("Libro no encontrado o no está prestado")
+
+        elif opcion == '5':
+            if not biblioteca:
+                print("No hay libros en la biblioteca")
+            else:
+                for material in biblioteca:
+                    material.mostrar_info()
 
         elif opcion == '6':
-            print("Saliendo del programa.")
+            print("Saliendo del programa")
             break
                     
 main()

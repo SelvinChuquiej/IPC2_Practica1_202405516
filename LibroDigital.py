@@ -15,14 +15,14 @@ class LibroDigital(MaterialBiblioteca):
         if value > 0:
             self._tamaño_archivo = value
         else:
-            raise ValueError("El tamaño del archivo debe ser un número positivo.")
+            raise ValueError("El tamaño del archivo debe ser un número positivo")
     
     def prestar(self):
         if self.estado:
             print("Libro no disponible")
         else:
             self.estado = True
-            print(f"Libro '{self.titulo}' prestado.")
+            print(f"Libro '{self.titulo}' prestado")
  
     def mostrar_info(self):
         estado = "Disponible" if not self.estado else "Prestado"

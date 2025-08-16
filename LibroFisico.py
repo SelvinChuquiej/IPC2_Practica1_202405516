@@ -15,10 +15,10 @@ class LibroFisico(MaterialBiblioteca):
         if value >= 0:
             self._no_ejemplares = value
         else:
-            raise ValueError("El número de ejemplares debe ser un entero positivo.")
+            raise ValueError("El número de ejemplares debe ser un entero positivo")
 
     def prestar(self):
-        if self.estado or self.no_ejemplares <= 0:
+        if self.no_ejemplares <= 0:
             print("Libro no disponible")
         else:
             self.no_ejemplares -= 1
