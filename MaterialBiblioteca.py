@@ -1,12 +1,12 @@
 import random
 import string
+from abc import ABC, abstractmethod
 
-class MaterialBiblioteca:
+class MaterialBiblioteca(ABC):
     def __init__(self, titulo, autor):
         self.titulo = titulo
         self.autor = autor
         self.codigo = self._generar_codigo()
-        self.estado = False
 
     def _generar_codigo(self):
         codigo = string.ascii_letters + string.digits
@@ -27,37 +27,19 @@ class MaterialBiblioteca:
     @autor.setter
     def autor(self, value):
         self._autor = value
-
-    @property
-    def codigo(self):
-        return self._codigo 
     
-    @codigo.setter
-    def codigo(self, value):
-        self._codigo = value
- 
-    @property
+    @abstractmethod
     def estado(self):
-        return self._estado
- 
-    @estado.setter
-    def estado(self, value):
-        self._estado = value 
-    
-    def prestar(self):        
-        if self.estado:
-            print("Libro no disponible")
-        else:
-            self.estado = True
-            print(f"Libro '{self.titulo}' prestado")
-            
-    def devolver(self):
-        if not self.estado:
-            print("Libro no esta prestado")
-        else:
-            self.estado = False
-            print(f"Libro '{self.titulo}' devuelto")
+        pass
 
+    @abstractmethod
+    def prestar(self):
+        pass
+
+    @abstractmethod     
+    def devolver(self):
+        pass
+
+    @abstractmethod
     def mostrar_info(self):
-        estado = "Disponible" if not self.estado else "Prestado"
-        print(f"Título: {self.titulo}, Autor: {self.autor}, Código: {self.codigo}, Estado: {estado}")
+        pass

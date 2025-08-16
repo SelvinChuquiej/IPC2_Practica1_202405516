@@ -1,5 +1,6 @@
 from LibroDigital import LibroDigital
 from LibroFisico import LibroFisico
+from MaterialBiblioteca import MaterialBiblioteca
 
 def menu():
     print("\n----------Biblioteca---------")
@@ -26,15 +27,15 @@ def main():
                 tipo = input("Ingrese el tipo de Libro (digital/fisico): ").lower() 
                 if tipo == 'digital':
                     tamaño_archivo = input("Ingrese el tamaño del archivo: ")
-                    material = LibroDigital(titulo, autor, tamaño_archivo)
-                    biblioteca.append(material)
-                    print(f"Libro '{material.titulo}' agregado con código {material.codigo}")
+                    materialDigital = LibroDigital(titulo, autor, tamaño_archivo)
+                    biblioteca.append(materialDigital)
+                    print(f"Libro '{materialDigital.titulo}' agregado con código {materialDigital.codigo}")
                     break
                 elif tipo == 'fisico':
                     no_ejemplares = int(input("Ingrese el número de ejemplares: "))
-                    material = LibroFisico(titulo, autor, no_ejemplares)
-                    biblioteca.append(material)
-                    print(f"Libro '{material.titulo}' agregado con código {material.codigo}")
+                    materialFisico = LibroFisico(titulo, autor, no_ejemplares)
+                    biblioteca.append(materialFisico)
+                    print(f"Libro '{materialFisico.titulo}' agregado con código {materialFisico.codigo}")
                     break
                 else:
                     print("Tipo de Libro no válido. Intente nuevamente")
