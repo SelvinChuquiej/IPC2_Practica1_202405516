@@ -31,11 +31,18 @@ class MaterialBiblioteca:
     @property
     def codigo(self):
         return self._codigo 
+    
+    @codigo.setter
+    def codigo(self, value):
+        self._codigo = value
  
     @property
     def estado(self):
         return self._estado
  
+    @estado.setter
+    def estado(self, value):
+        self._estado = value 
     
     def prestar(self):        
         if self.estado:
@@ -49,7 +56,7 @@ class MaterialBiblioteca:
             print("Material no esta prestado")
         else:
             self.estado = False
-            print("Material '{self._titulo}' devuelto")
+            print(f"Material '{self._titulo}' devuelto")
 
     def mostrar_info(self):
         estado = "Disponible" if not self.estado else "Prestado"
