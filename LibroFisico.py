@@ -5,12 +5,24 @@ class LibroFisico(MaterialBiblioteca):
         super().__init__(titulo, autor)
         self.no_ejemplares = no_ejemplares
 
+    @property
+    def no_ejemplares(self):
+        return self._no_ejemplares
+    
+    @no_ejemplares.setter
+    def no_ejemplares(self, value): 
+        value = int(value)
+        if value > 0:
+            self._no_ejemplares = value
+        else:
+            raise ValueError("El número de ejemplares debe ser un entero positivo.")
+
     def prestar(self):
         if self.estado:
-            print("Material no disponible")
+            print("Libro no disponible")
         else:
             self.estado = True
-            print(f"Material '{self.titulo}' prestado. Ejemplares restantes: {self.no_ejemplares}")
+            print(f"Libro '{self.titulo}' prestado. Ejemplares restantes: {self.no_ejemplares}")
  
     def mostrar_info(self):
         estado = "Disponible" if not self.estado else "Prestado"

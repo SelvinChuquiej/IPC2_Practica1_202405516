@@ -46,17 +46,17 @@ class MaterialBiblioteca:
     
     def prestar(self):        
         if self.estado:
-            print("Material no disponible")
+            print("Libro no disponible")
         else:
             self.estado = True
-            print(f"Material '{self._titulo}' prestado")
+            print(f"Libro '{self._titulo}' prestado")
             
     def devolver(self):
         if not self.estado:
-            print("Material no esta prestado")
+            print("Libro no esta prestado")
         else:
             self.estado = False
-            print(f"Material '{self._titulo}' devuelto")
+            print(f"Libro '{self._titulo}' devuelto")
 
     def mostrar_info(self):
         estado = "Disponible" if not self.estado else "Prestado"
