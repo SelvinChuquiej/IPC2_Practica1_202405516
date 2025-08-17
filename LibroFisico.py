@@ -3,7 +3,7 @@ from MaterialBiblioteca import MaterialBiblioteca
 class LibroFisico(MaterialBiblioteca):
     def __init__(self, titulo, autor, no_ejemplares):
         super().__init__(titulo, autor)
-        self.no_ejemplares = no_ejemplares
+        self._no_ejemplares = no_ejemplares
 
     @property
     def no_ejemplares(self):

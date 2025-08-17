@@ -3,7 +3,7 @@ from MaterialBiblioteca import MaterialBiblioteca
 class LibroDigital(MaterialBiblioteca):
     def __init__(self, titulo, autor, tamaño_archivo):
         super().__init__(titulo, autor)
-        self.tamaño_archivo = tamaño_archivo
+        self._tamaño_archivo = tamaño_archivo
         self._prestado = False
 
     @property
@@ -17,7 +17,14 @@ class LibroDigital(MaterialBiblioteca):
             self._tamaño_archivo = value
         else:
             raise ValueError("El tamaño del archivo debe ser un número positivo")
-    
+    @property
+    def prestado(self):
+        return self._prestado
+
+    @prestado.setter
+    def prestado(self, value):
+        self._prestado = value
+
     def estado(self):
         return not self._prestado #True
 
